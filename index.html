@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Feliz Navidad - 1º DAW</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0; padding:0;
+  background:linear-gradient(#0a1533,#103b66);
+  font-family:'Comic Sans MS', sans-serif;
+  color:white;
+  overflow:hidden;
+}
+
+.container{
+  position:relative;
+  width:100vw; height:100vh;
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  text-align:center;
+}
+
+.card{
+  position:relative;
+  padding:40px 20px;
+  width:min(900px,95vw);
+  background:rgba(255,255,255,0.05);
+  border-radius:20px;
+  backdrop-filter:blur(4px);
+  box-shadow:0 0 20px rgba(0,0,0,0.4);
+  border:1.5px solid rgba(255,255,255,0.15);
+}
+
+h1{
+  font-size: clamp(28px, 5vw, 56px);
+  margin:0;
+  text-shadow:0 0 6px #fff;
+}
+
+h2{
+  font-size: clamp(16px, 3vw, 26px);
+  margin:18px 0 0;
+  opacity:0.9;
+  text-shadow:0 0 5px #fff;
+}
+
+/* Ornaments */
+.ornament{
+  position:absolute;
+  width:50px; height:50px;
+  border-radius:50%;
+  background:radial-gradient(circle, #fff 0%, #e44 60%, #900 100%);
+  box-shadow:0 0 12px rgba(200,40,40,0.6);
+}
+.ornament1{ top:18px; left:18px; }
+.ornament2{ top:18px; right:18px; background:radial-gradient(circle,#fff 0%,#3f3 60%,#060 100%); }
+.ornament3{ bottom:18px; left:35px; background:radial-gradient(circle,#fff 0%,#55f 60%,#006 100%); }
+.ornament4{ bottom:18px; right:35px; }
+
+/* Snow */
+.snow{
+  position:absolute;
+  top:-10px;
+  width: 10px; height: 10px;
+  background:white;
+  border-radius:50%;
+  opacity:0.8;
+  animation: fall linear infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(110vh);}
+}
+
+/* Santa */
+.santa{
+  position:absolute;
+  top:18%;
+  left:-60%;
+  width:380px;
+  animation:santa-move 18s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.6));
+}
+
+@keyframes santa-move{
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(200vw);
+  }
+}
+
+/* Ground */
+.ground{
+  position:absolute;
+  bottom:0; left:0; right:0;
+  height:120px;
+  background:white;
+  box-shadow:0 -10px 25px rgba(255,255,255,0.35);
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <svg class="santa" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+      <g transform="scale(1)">
+          <g fill="#b8794b">
+              <circle cx="80" cy="140" r="30"/>
+              <circle cx="160" cy="140" r="30"/>
+          </g>
+          <path d="M250 150 Q260 110 310 115 Q360 120 390 150 L390 190 L250 190Z" fill="#b30000"/>
+          <rect x="250" y="190" width="160" height="40" rx="12" fill="#8B0000"/>
+          <g>
+              <circle cx="330" cy="130" r="22" fill="#ffe7d0"/>
+              <rect x="312" y="150" width="36" height="36" rx="8" fill="#ff2333"/>
+              <path d="M315 118 Q330 80 345 118Z" fill="#ff2333" stroke="#fff" stroke-width="3"/>
+          </g>
+      </g>
+  </svg>
+
+  <div class="card">
+    <div class="ornament ornament1"></div>
+    <div class="ornament ornament2"></div>
+    <div class="ornament ornament3"></div>
+    <div class="ornament ornament4"></div>
+
+    <h1>🎅✨ 1º DAW OS DESEA<br>UNAS FELICES FIESTAS ✨🎄</h1>
+    <h2>Salesianas Plaza Castilla</h2>
+  </div>
+
+</div>
+
+<div class="ground"></div>
+
+<script>
+for(let i=0;i<80;i++){
+  let s = document.createElement("div");
+  s.className="snow";
+  s.style.left = Math.random()*100 + "vw";
+  s.style.animationDuration = (3 + Math.random()*5)+"s";
+  s.style.opacity = 0.5 + Math.random()*0.5;
+  document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
